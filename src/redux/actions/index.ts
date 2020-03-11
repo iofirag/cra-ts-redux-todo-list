@@ -6,32 +6,29 @@ export enum TodoOPerations {
 }
 
 let startId = 0;
-let actions = {
-  addTodo: (title) => {
-    return {
-      type: TodoOPerations.ADD_TODO,
-      title: title,
-      id: startId++
-    }
-  },
-  completeTodo: (id) => {
-    return {
-      type: TodoOPerations.COMPLETE_TODO,
-      id
-    }
-  },
-  deleteTodo: (id) => {
-    return {
-      type: TodoOPerations.DELETE_TODO,
-      id
-     }
-  },
-  updateTodo: (id, title) => {
-    return {
-      type: TodoOPerations.UPDATE_TODO,
-      id,
-      title
-    }
+export const addTodo = (title) => {
+  return {
+    type: TodoOPerations.ADD_TODO,
+    title: title,
+    id: startId++
+  }
+};
+export const completeTodo = (id) => {
+  return {
+    type: TodoOPerations.COMPLETE_TODO,
+    id
   }
 }
-export default actions
+export const deleteTodo = (id) => {
+  return {
+    type: TodoOPerations.DELETE_TODO,
+    id
+    }
+}
+export const updateTodo = (id, title) => {
+  return {
+    type: TodoOPerations.UPDATE_TODO,
+    id,
+    title
+  }
+}

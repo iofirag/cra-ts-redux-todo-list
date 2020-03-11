@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Todo } from '../models/Todo'
 
 interface Props {
-  todo: Todo
-  actions: any,
+  todo: Todo,
+  completeTodo: (id) => void,
+  deleteTodo: (id) => void,
+  updateTodo: (id, string) => void,
 }
 interface State {
   title: string,
@@ -27,12 +29,12 @@ class TodoItem extends Component<Props, State> {
   }
 
   onClickComplete() {
-    this.props.actions.completeTodo(this.props.todo.id);
+    this.props.completeTodo(this.props.todo.id);
     this.setState({checked: !this.state.checked})
   }
   
   onClickDelete() {
-    this.props.actions.deleteTodo(this.props.todo.id);
+    this.props.deleteTodo(this.props.todo.id);
   }
   
   onChangeTitle(e) {
@@ -60,7 +62,7 @@ class TodoItem extends Component<Props, State> {
 
   handleUpdate() {
     if (this.state.title !== '') {
-      this.props.actions.updateTodo(this.props.todo.id, this.state.title);
+      this.props.updateTodo(this.props.todo.id, this.state.title);
     }
   }
 

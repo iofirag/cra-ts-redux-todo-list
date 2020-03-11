@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { addTodo } from '../redux/actions';
+import { connect } from 'react-redux';
 
 interface Props {
-  addTodo: Function
+  addTodo: (title) => void
 }
 interface State {
   title: string
@@ -47,4 +49,11 @@ class TodoInput extends Component<Props, State> {
   }
 }
 
-export default TodoInput
+function mapDispatchToProps(dispatch) {
+  return {
+    addTodo: (title) => {
+      dispatch(addTodo(title));
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(TodoInput)
